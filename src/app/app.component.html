@@ -1,0 +1,42 @@
+
+<div id="navg">
+  <nav class="navbar navbar-dark mb-5" style="background-color:rgb(3, 45, 109);">
+    <a class="navbar-brand"routerLink="./mainpage" href="#"><img src="../../assets/img/spot1.png" style="border-radius: 50%;" class="logo"></a> 
+    <a class="navbar-brand" routerLink="./mainpage" href="/#">User : {{userName}}</a>
+   
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" routerLink="./mainpage" href="#">Home</a>
+        <a class="nav-item nav-link" routerLink="./showchoreographers" href="#">Choreographers</a>
+        <a class="nav-item nav-link" routerLink="./showuserbookings" href="#">My Bookings</a>
+        <a class="nav-item nav-link" routerLink="./feedback" href="#">Feedback</a>
+
+      </div>
+    </div>
+
+    <fb-like url={{url}} ></fb-like> &nbsp;
+    <a><tweet url={{urltweet}} text={{text}}></tweet></a>
+    <a class="nav-item nav-link" style="color:white;" (click)="logout()" href="#">Logout</a>
+  </nav>
+  
+
+ 
+</div>
+
+
+<div id="adminNav">
+  <nav class="navbar navbar-dark mb-5" style="background-color: rgb(3, 45, 109);">
+    <a class="navbar-brand"routerLink="./adminhome" href="#"><img src="../../assets/img/spot1.png" style="border-radius: 50%;" class="logo"></a> 
+    <a class="navbar-brand" routerLink="./adminhome" href="/#">Admin:{{userName}}</a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" routerLink="./adminhome" href="#">ManageChoreographers</a>
+        <a class="nav-item nav-link" routerLink="./bookingsadmin" href="#">ManageBookings</a>
+        <a class="nav-item nav-link" routerLink="./rewards" href="#">Rewards</a>
+        <a class="nav-item nav-link" routerLink="./adminfeedback" href="#">Feedback</a>
+      </div>
+    </div>
+    <a class="nav-item nav-link" style="color: white;" (click)="logout()" href="#">Logout</a>
+  </nav>
+</div>
+<router-outlet></router-outlet>

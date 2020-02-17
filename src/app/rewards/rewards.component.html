@@ -1,0 +1,42 @@
+<div  class="container" class="hero-image" style="padding-top:-47.2px; margin-top:-47.2px" >
+  <br>
+
+    <h4 style="text-align: center;" ><strong>Announce Rewards</strong></h4>
+    
+    <br>
+
+    <form action="action_page.php" #reward="ngForm">
+  
+      <div  class="container" id="choreographer">
+        <table class="table table-striped"  align="center" >
+
+            <tr class="form-group">
+                <th>Booking Id</th>
+                <td><div ><select  name="bookingId" id="bookingId" class="form-control" [(ngModel)]="bookingId"  required>
+                  <option >Select BookingId</option>
+                  <option *ngFor="let ch of allBookings; let all of allBookinIds ;let i = index " [disabled]="ch.bookingStatus != 'Confirmed' || ch.reward != 'None'">{{all.bookingId}}</option>
+                 </select></div></td>
+              </tr>
+
+              <tr class="form-group">
+                  <th>Winning Rank</th>
+                  <td><div ><select name="position" id="position" (change)="getAmount(position)" class="form-control"   [(ngModel)]="position"  required>
+                    <option value="1" >1</option>
+                    <option value="2" >2</option>
+                    <option value="3" >3</option>
+                   </select></div></td>
+                </tr>
+
+                  <tr class="form-group">
+                      <th>Reward Amount</th>
+                      <td><div ><input name="amt" id="amt" class="form-control" value="{{positionAmount}}" [(ngModel)]="amount" disabled></div></td>
+                    </tr>
+               
+        </table>
+  
+          <div align="center"><button type="Submit" [disabled]=!reward.valid (click)=announceRewards() class="btn btn-info">Continue</button></div>
+  
+      </div>
+  
+    </form>
+  </div>

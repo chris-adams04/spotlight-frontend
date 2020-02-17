@@ -1,0 +1,52 @@
+<div class="container" class="form-group">
+
+    <div align="left" style="background-color:rgb(9, 69, 160);"><br><button class="btn btn-info"
+            routerLink="/loginhome">Home</button> <br> </div><br>
+   <div align="center">
+        <h1 style="font-family:serif; color:rgb(35, 156, 116);"> Sign-In <br><h3 style="font-family:cursive; color:chocolate;">SPOTLIGHT DANCE STUDIO</h3> </h1>
+    </div>
+    <br>
+    
+    <form action="action_page.php" (ngSubmit)="check(login)" #login="ngForm" >
+
+        <div align="center">
+
+
+            <div align="center" class="imgcontainer">
+                <img src="../assets/img/avatar1.png" alt="Avatar" class="avatar">
+            </div>
+        </div>
+        <br>
+        <table align="center">
+
+
+            <tr class="form-group">
+                <th style="color: chocolate; font-family:inherit;">Mobile Number</th>
+                <td><input type="text" class="form-control" id="username" name="username" #username="ngModel"
+                        [(ngModel)]="un" required placeholder="10 digit Mobile Num" pattern="[6789][0-9]{9}"></td>
+                <td [hidden]="username.valid || username.pristine" class="alert alert-danger">Only numerics and 10 digits
+                </td>
+            </tr>
+
+            <tr class="form-group">
+                <th style="color: chocolate; font-family:inherit;">Password</th>
+                <td><input type="password" class="form-control" id="password" name="password" #password="ngModel"
+                        [(ngModel)]="pw" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  placeholder="Case Sensitive"></td>
+                <td [hidden]="password.valid || password.pristine" class="alert alert-danger">Case sensitive & Min 8
+                    char</td>
+            </tr>
+            
+
+        </table>
+
+
+        <div align="center" class="container" id="login">
+            <button type="submit" [disabled]=!login.valid type="submit" class="btn btn-info">Login</button>
+        </div>
+<br>
+        <div class="signin">
+            <p>New to Spotlight Dance Studio? <a href="#" routerLink="/register">Register here</a></p>
+        </div>
+    </form>
+    
+</div>

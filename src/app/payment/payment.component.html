@@ -1,0 +1,117 @@
+
+    <div class="container">
+        
+        <h3 align="center">Select Payment Method</h3>
+        <br><br>
+        <div align="center">
+        <div>
+           <h3> <input type="radio" (click)=cardPayment() name="studio" id="studio" [(ngModel)]="paymentMode" value="Studio"
+                class=”md-radiobtn” checked=”checked” required><strong>Card</strong>
+              &nbsp;
+            <input type="radio" (click)=cashPayment() name="home" id="home" [(ngModel)]="paymentMode" value="Home"
+                class=”md-radiobtn” required><strong>Cash</strong></h3>
+            </div>
+        </div>
+<br>
+
+        <div id="card" hidden  align="center">
+            <div class="form-group">
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pay" value="credit" required
+                        [(ngModel)]="payment.pay" #pay="ngModel">
+                    <label class="form-check-label">
+                        <h4>Credit Card</h4>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pay" value="debit" required
+                        [(ngModel)]="payment.pay" #pay="ngModel">
+                    <label class="form-check-label">
+                        <h4>Debit Card</h4>
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pay" value="net" required
+                        [(ngModel)]="payment.pay" #pay="ngModel">
+                    <label class="form-check-label">
+                        <h4>Net Banking</h4>
+                    </label>
+                </div>
+                <br><br>
+                <form (ngSubmit)="paymentfn(credit)" #credit="ngForm">
+                    <div *ngIf="payment.pay == 'credit'">
+                        <div>
+                            <label>Credit Card Number</label>
+                            <input type="text" name="cardNum" [(ngModel)]="cardNum" required>
+                        </div>
+                        <div>
+                            <label>Expiry Date</label>
+                            <input type="number" name="exp" [(ngModel)]="exp" required>
+                        </div>
+                        <div>
+                            <label>CVV</label>
+                            <input type="number" name="cvv" [(ngModel)]="cvv" required>
+                        </div>
+                        <div>
+                            <label>Name</label>
+                            <input type="text" name="name" [(ngModel)]="name" required>
+                        </div>
+                        <br><br>
+                        <button [disabled]=!credit.valid (click)="paymentfn(credit)" type="submit" class="btn btn-info">Confirm Booking</button>
+                    </div>
+                </form>
+
+                <form (ngSubmit)="paymentfn(debit)" #debit="ngForm">
+                    <div *ngIf="payment.pay == 'debit'">
+                        <div>
+                            <label>Debit Card Number</label>
+                            <input type="text" name="cardNum" [(ngModel)]="cardNum" required>
+                        </div>
+                        <div>
+                            <label>Expiry Date</label>
+                            <input type="number" name="exp" [(ngModel)]="exp" required>
+                        </div>
+                        <div>
+                            <label>CVV</label>
+                            <input type="number" name="cvv" [(ngModel)]="cvv" required>
+                        </div>
+                        <div>
+                            <label>Name</label>
+                            <input type="text" name="name" [(ngModel)]="name" required>
+                        </div>
+                        <br><br>
+                        <button [disabled]=!debit.valid type="submit" (click)="paymentfn(debit)" class="btn btn-info">Confirm Booking</button>
+                    </div>
+                </form>
+
+                <form (ngSubmit)="paymentfn(net)" #net="ngForm">
+                    <div *ngIf="payment.pay == 'net'">
+                        <div>
+                            <label>Customer Id</label>
+                            <input type="text" name="custid" [(ngModel)]="cardNum" required>
+                        </div>
+                        <div>
+                            <label>Password</label>
+                            <input type="password" name="pass" [(ngModel)]="pass" required>
+                        </div>
+                        <br><br>
+                        <button [disabled]=!net.valid (click)="paymentfn(net)" type="submit" class="btn btn-info">Confirm Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+      
+        <div id="cash" align="center" hidden>
+                <form (ngSubmit)="paymentfn(cash)" #cash="ngForm">
+                <br><br>
+                <p align="center" style="color: red;"><strong>Note: You can pay the fee at any of our branches</strong></p>
+            <button (click)="paymentfn(credit)" class="btn btn-info">Confirm Booking</button>
+        </form>
+    </div>
+   
+<br>
+<br>
+    </div>

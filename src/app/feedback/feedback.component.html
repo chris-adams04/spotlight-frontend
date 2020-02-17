@@ -1,0 +1,50 @@
+
+<form action="action_page.php" name="feedbbac" #feedbbac="ngForm">
+  <div align="center" style="color: rgb(124, 124, 209);" ><h4>All Feedbacks</h4></div>
+ 
+  <aside>
+    <p>YOUR FEEDBACK MATTERS A LOT</p>
+    <img src="../assets/img/feedback1.jpg" alt="#">
+  </aside>
+  <div class="container">
+
+
+      <div class="form-group">
+          
+          <div><input type="address" class="form-control"  id="feed" name="feed" #feed="ngModel" placeholder="Write your feedback here..."
+             [(ngModel)]="feedback.feedback" required ></div>
+          </div>
+
+        <div align="center"><button type="submit" (click)="addFeedback()" [disabled]=!feedbbac.valid class="btn btn-info">Submit</button></div>
+
+  </div>
+<br>
+<br>
+ 
+  
+  <div class="container" [hidden]="allFeedbacks.length <= 0">
+  <table> 
+          
+      <tr *ngFor="let fed of allFeedbacks | paginate:config ">
+        <th><div style="color: cornflowerblue;" >{{fed.candidateName}}</div> </th>
+       <td> <div class="form-control" style="margin-left: 150px;">{{fed.feedback}}</div></td>
+      </tr>
+      <br><br>
+
+  </table>
+  <pagination-controls align="center" (pageChange)="pageChanged($event)"></pagination-controls>
+
+</div>
+
+
+</form>
+
+
+
+<div>
+    <div id="noBookings" [hidden]="allFeedbacks.length > 0"> 
+        <br>
+        
+        <p align="center" style="color: rgb(71, 39, 252);"><strong>No Feedbacks Yet</strong></p>
+    
+      </div>

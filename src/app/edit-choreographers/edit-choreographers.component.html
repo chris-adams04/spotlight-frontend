@@ -1,0 +1,107 @@
+<div class="container">
+  <div>
+    <h4 align="center"><strong>Edit selected</strong></h4>
+  </div>
+  <br>
+
+  <form action="action_page.php" (ngSubmit)="onSubmit(editForm)" #editForm="ngForm">
+    <div class="container">
+      <table>
+
+        <tr class="form-group">
+          <th>Id</th>
+          <td><input type="text" class="form-control" id="cId" name="cId" #cId="ngModel"
+              [(ngModel)]="selectedChoreographer.cId" readonly></td>
+        </tr>
+
+        <tr class="form-group">
+          <th>Name</th>
+          <td><input type="text" class="form-control" id="Name" name="Name" #name="ngModel"
+              [(ngModel)]="selectedChoreographer.cName" required pattern="[a-zA-Z\s]{3,}"></td>
+          <td [hidden]="name.valid || name.pristine" class="alert alert-danger">Only Alphabates & Min 3 letters </td>
+        </tr>
+
+
+        <tr class="form-group">
+          <th>Mobile Number</th>
+          <td><input type="text" class="form-control" id="phoneNo" name="phoneNo" #phoneNo="ngModel"
+              [(ngModel)]="selectedChoreographer.phNo" required pattern="[6789][0-9]{9}"></td>
+          <td [hidden]="phoneNo.valid || phoneNo.pristine" class="alert alert-danger">Enter 10 digit Mobile Number </td>
+        </tr>
+
+        <tr class="form-group">
+          <th>Email</th>
+          <td><input type="email" class="form-control" id="email" name="email" #email="ngModel"
+              [(ngModel)]="selectedChoreographer.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></td>
+          <td [hidden]="email.valid || email.pristine" class="alert alert-danger">Email Format (Eg: abc@xyz.com)</td>
+        </tr>
+
+        <tr class="form-group">
+          <th>Age</th>
+          <td><input type="number" class="form-control" id="age" name="age" #age="ngModel"
+              [(ngModel)]="selectedChoreographer.age" required pattern="[0-9]{1,2}"></td>
+          <td [hidden]="age.valid || age.pristine" class="alert alert-danger">Enter Valid Age</td>
+        </tr>
+
+        <tr class="form-group">
+          <th>Gender</th>
+          <td><select class="form-control" id="gender" name="gender" #gender="ngModel"
+              [(ngModel)]="selectedChoreographer.gender" required>
+              <option>Male</option>
+              <option>Female</option>
+            </select></td>
+          <td [hidden]="gender.valid || gender.pristine" class="alert alert-danger">Select Gender</td>
+        </tr>
+
+        <tr class="form-group">
+          <th>Dance Form</th>
+          <td><input type="text" class="form-control" id="danceType" name="danceType" #danceType="ngModel"
+              [(ngModel)]="selectedChoreographer.danceType" required pattern="[a-zA-Z]{3,}"></td>
+          <td [hidden]="danceType.valid || danceType.pristine" class="alert alert-danger">Only Alphabates & Min 3
+            letters</td>
+        </tr>
+
+        <tr class="form-group">
+          <th>City</th>
+          <td><input type="text" class="form-control" id="city" name="city" #city="ngModel"
+              [(ngModel)]="selectedChoreographer.city" required pattern="[a-zA-Z]{3,}"></td>
+          <td [hidden]="city.valid || city.pristine" class="alert alert-danger">Only Alphabates & Min 3 letters</td>
+        </tr>
+
+        <tr class="form-group">
+          <th>Area</th>
+          <td><input type="text" class="form-control" id="area" name="area" #area="ngModel"
+              [(ngModel)]="selectedChoreographer.area" required pattern="[a-zA-Z]{2,}"></td>
+          <td [hidden]="area.valid || area.pristine" class="alert alert-danger">Only Alphabates & Min 2 letters</td>
+        </tr>
+
+        <tr class="form-group">
+          <th>Service</th>
+          <td><select class="form-control" id="service" name="service" #service="ngModel"
+              [(ngModel)]="selectedChoreographer.place" required>
+              <option>Studio</option>
+              <option>Home</option>
+            </select></td>
+          <td [hidden]="service.valid || service.pristine" class="alert alert-danger">Select Service</td>
+        </tr>
+
+        <tr class="form-group">
+          <th>Num Of Bookings</th>
+          <td><input type="number" class="form-control" id="noOfBookings" name="noOfBookings" #noOfBookings="ngModel"
+              [(ngModel)]="selectedChoreographer.noOfBookings" readonly></td>
+          <td [hidden]="noOfBookings.valid || noOfBookings.pristine" class="alert alert-danger"></td>
+        </tr>
+
+        <tr class="form-group">
+          <th>Charge</th>
+          <td><input type="number" class="form-control" id="charge" name="charge" #charge="ngModel"
+              [(ngModel)]="selectedChoreographer.charge" required pattern="[0-9]{4,}"></td>
+          <td [hidden]="charge.valid || charge.pristine" class="alert alert-danger">Min 4 digits</td>
+        </tr>
+
+      </table>
+      <br>
+      <div><button type="submit" style="margin-left: 300px;" class="btn btn-info" name="rad"> Submit</button></div>
+    </div>
+  </form>
+</div>

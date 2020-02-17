@@ -1,0 +1,136 @@
+<div class="conteiner" style="align-items: center;">
+<h4 style="text-align: center;"><strong>Bookings List</strong></h4>
+  <div align="center" class="imgcontainer">
+    <img src="../assets/img/book1.jpg" alt="Avatar" class="avatar">
+  </div>
+
+
+  <div id="noBookings" [hidden]="userBookings.length > 0">
+    <br>
+    <br>
+   
+    <p align="center" style="color: red;"><strong>Currently don't have any bookings</strong></p>
+
+  </div>
+
+
+  <div id="userBookings" [hidden]="userBookings.length == 0">
+
+      <div align="center" fxLayout fxLayoutAlign="center center">
+          <mat-form-field fxFlex="40%">
+            <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Search">
+          </mat-form-field>
+        </div>
+
+      <div class="wrapper">
+          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      
+      
+            <ng-container matColumnDef="bookingId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header><strong> Registration Id </strong></th>
+              <td mat-cell *matCellDef="let element"> {{element.bookingId}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="candidate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header><strong> Student </strong></th>
+              <td mat-cell *matCellDef="let element"> {{element.candidate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="candidateId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header><strong> StudentId/Phno </strong></th>
+              <td mat-cell *matCellDef="let element"> {{element.candidateId}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="choreographerId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Master Id</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.choreographerId}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="choreographer">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Master Name</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.choreographer}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="danceType">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>DanceForm</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.danceType}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="city">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>City</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="area">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Address</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.area}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="place">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Service</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.place}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="rank">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Rank</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="reward">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Reward</strong> </th>
+              <td mat-cell *matCellDef="let element"> {{element.reward}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="totalFee">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Total Fee</strong> </th>
+                <td  style="color: black;" mat-cell *matCellDef="let element"><b> {{element.totalFee}} </b></td>
+              </ng-container> 
+      
+              <ng-container matColumnDef="feeStatus">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Fee Status</strong> </th>
+                  <td  style="color: black;" mat-cell *matCellDef="let element"><b>{{element.feeStatus}}</b>
+                    <div [hidden]= " element.feeStatus == 'Paid' || element.bookingStatus != 'Confirmed'"><button class="btn btn-info" name="rad"
+                        (click)="paymentStatus(element.bookingId)">Pay</button></div>  </td>
+                </ng-container>
+
+            <ng-container matColumnDef="costumeStatus">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Costume Status</strong> </th>
+                <td  style="color: red;" mat-cell *matCellDef="let element"><b> {{element.costumeStatus}}</b>
+                  <div
+                    [hidden]="element.costumeStatus != 'Requested' || element.costumeStatus == 'Issued' || element.bookingStatus != 'Confirmed' ">
+                    <button type="reset" class="btn btn-link" name="rad"
+                      (click)="issueCostume(element.bookingId)">Issue </button><br>
+                    <button type="reset" class="btn btn-link" name="rad"
+                      (click)="declineCostume(element.bookingId)">Decline</button> </div>
+                </td>
+              </ng-container>
+      
+              <ng-container matColumnDef="bookingStatus">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Booking Status</strong> </th>
+                  <td  style="color:red" mat-cell *matCellDef="let element"><b>{{element.bookingStatus}}</b>
+                    <div [hidden]="element.bookingStatus != 'Pending' || element.bookingStatus == 'Confirmed' ">
+                      <button type="reset" class="btn btn-link"name="rad"
+                        (click)="confirmBooking(element.bookingId)">Confirm</button><br>
+                      <button type="reset" class="btn btn-link" name="rad"
+                        (click)="declineBooking(element.bookingId)">Decline</button></div></td>
+                </ng-container>
+      
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> <strong>Action</strong> </th>
+              <td mat-cell *matCellDef="let element"><button type="reset" class="btn btn-danger" name="rad" (click)="deleteBooking(element)">Delete
+                </button> </td>
+            </ng-container>
+      
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+      
+          <!-- Angular 8 pagination -->
+          <mat-paginator [pageSizeOptions]="[2, 10, 15,userBookings.length]" showFirstLastButtons></mat-paginator>
+          <br>
+          <!-- <pagination-controls align="center" (pageChange)="pageChanged($event)"></pagination-controls> -->
+      
+        </div>
+      </div>
+</div>
+

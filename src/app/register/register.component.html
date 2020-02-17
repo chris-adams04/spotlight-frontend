@@ -1,0 +1,76 @@
+<div class="container">
+    <div align="center" style="color:lightskyblue">
+        <h3><strong> Spotlight Dance Registration</strong></h3>
+    </div>
+<br>
+  <form action="action_page.php" (ngSubmit)="onSubmit(register)" #register="ngForm">
+    <div class="container">
+    <table >
+
+        <tr class="form-group">
+          <th>Name</th>
+          <td><input type="text" class="form-control" id="Name" name="Name" #name="ngModel"
+             [(ngModel)]="registration.name" required pattern="[a-zA-Z]{3,}"></td>
+          <td [hidden]="name.valid || name.pristine" class="alert alert-danger">Only Alphabates & Min 3 letters </td>
+        </tr>
+
+      
+      <tr class="form-group">
+        <th>Mobile Number</th>
+        <td><input type="text" class="form-control" id="phoneNo" name="phoneNo" #phoneNo="ngModel"
+          [(ngModel)]="registration.phoneNo" required pattern="[6789][0-9]{9}"></td>
+        <td [hidden]="phoneNo.valid || phoneNo.pristine" class="alert alert-danger">Numerics and 10 digits </td>
+      </tr>
+
+      <tr class="form-group">
+        <th>Email</th>
+        <td><input type="email" class="form-control" id="email" name="email" #email="ngModel"
+          [(ngModel)]="registration.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></td>
+        <td [hidden]="email.valid || email.pristine" class="alert alert-danger">Email Format (Eg: abc@xyz.com)</td>
+      </tr>
+
+      <tr class="form-group">
+        <th>Age</th>
+       <td><input type="number" class="form-control" id="age" name="age" #age="ngModel"
+          [(ngModel)]="registration.age" required pattern="[0-9]{1,2}"></td>
+        <td [hidden]="age.valid || age.pristine" class="alert alert-danger">Enter Valid Age</td>
+      </tr>
+
+      <tr  class="form-group">
+        <th>Gender</th>
+        <td><select class="form-control" id="gender" name="gender" 
+          #gender="ngModel" [(ngModel)]="registration.gender" required>
+            <option>Male</option>
+            <option>Female</option>
+        </select></td>
+        <td [hidden]="gender.valid || gender.pristine" class="alert alert-danger">Select Gender</td>
+      </tr>
+
+      <tr class="form-group">
+        <th>Password</th>
+       <td><input type="password" class="form-control" id="password" name="password" #password="ngModel"
+          [(ngModel)]="registration.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></td>
+        <td [hidden]="password.valid || password.pristine" class="alert alert-danger">Case sensitive & Min 8 char</td>
+      </tr>
+
+        <tr class="form-group">
+          <th>Confirm Password</th>
+          <td><input type="password" class="form-control" id="cpassword" name="cpassword" #cpassword="ngModel"
+            [(ngModel)]="registration.cpassword" required pattern="{{registration.password}}"></td>
+          <td [hidden]="cpassword.valid || cpassword.pristine" class="alert alert-danger">Password mismatch</td>
+        </tr>
+
+  </table>
+  <br>
+  <br>
+
+    <div style="margin-left:130px"><button type="Submit" [disabled]=!register.valid type="submit" class="btn btn-info">Register</button></div>
+</div>
+</form>
+
+  <div class="container signin"  style="color:rgb(207, 205, 207);" >
+    <p>Already a member!  <a href="#" routerLink="/login">Sign in</a></p>
+  </div>
+  
+
+</div>

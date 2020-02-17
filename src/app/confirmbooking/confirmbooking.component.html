@@ -1,0 +1,54 @@
+<div>
+  <div style="text-align: center;">
+    <h3><strong>Confirm Selection </strong></h3>
+  </div>
+  <div align="center" class="imgcontainer">
+    <img src="../assets/img/confirm.jpg" alt="Avatar" class="avatar">
+  </div>
+  <div>
+    <form name="confir" (ngSubmit)="onSubmit(confirm)" #confirm="ngForm">
+     <div align="center">
+      <table class="table table-striped">
+        <thead>
+          <th>Choreographer Id</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Dance Form</th>
+          <th>City</th>
+          <th>Address</th>
+          <th>Service</th>
+          <th><sup style="color: red;">*</sup>Costume</th>
+        </thead>
+        <tbody>
+          <td>{{selectedChoreograper.cId}}</td>
+          <td>{{selectedChoreograper.cName}}</td>
+          <td>{{selectedChoreograper.age}}</td>
+          <td>{{selectedChoreograper.gender}}</td>
+          <td>{{selectedChoreograper.danceType}}</td>
+          <td>{{selectedChoreograper.city}}</td>
+          <td>{{selectedChoreograper.area}}</td>
+          <td>{{selectedChoreograper.place}}</td>
+          <td><select id="costumeType"  class="form-control" name="costumeType" #costumeType="ngModel" [(ngModel)]="booking.costumeStatus"
+            required>
+            <option value="Requested">Yes</option>
+            <option value="Not Requested">No</option>
+          </select>
+          <tr> <br><br>
+            <p align="center" style="color: red;"><strong>Note: Costume charges will be added to Course Fee if selected YES </strong></p>
+          </tr>
+        </td>
+        </tbody>
+
+        
+
+      </table>
+      <br>
+      
+      <div><button type="button" type="submit" [disabled]=!confirm.valid class="btn btn-info">Confirm</button></div>
+      <br>
+      <br>
+    </div>
+    </form>
+  </div>
+</div>

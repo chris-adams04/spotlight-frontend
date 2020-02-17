@@ -1,0 +1,61 @@
+<div class="container">
+  <div align="center">
+    <h3><strong>All Feedbacks</strong></h3>
+  </div>
+  <aside>
+    <p> FEEDBACK METER</p>
+     <img src="../assets/img/feed.jpg" alt="#">
+  </aside>
+  <br>
+  <br>
+<div id="allFeedbacks" [hidden]="allFeedbacks.length == 0">
+  <div class="wrapper" >
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  
+  
+        <ng-container matColumnDef="feedbackId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><strong> Choreographer Id </strong></th>
+          <td mat-cell *matCellDef="let element"> {{element.feedbackId}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="candidateId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Candidate Id</strong> </th>
+          <td mat-cell *matCellDef="let element"> {{element.candidateId}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="candidateName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Candidate Name</strong> </th>
+          <td mat-cell *matCellDef="let element"> {{element.candidateName}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="feedback">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Feedback</strong> </th>
+          <td mat-cell *matCellDef="let element"> {{element.feedback}} </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+  
+      <!-- Angular 8 pagination -->
+      <mat-paginator [pageSizeOptions]="[2, 10, 15,allFeedbacks.length]" showFirstLastButtons></mat-paginator>
+      <br>
+      <!-- <pagination-controls align="center" (pageChange)="pageChanged($event)"></pagination-controls> -->
+  
+    </div>
+  </div>
+
+ 
+</div>
+
+<div>
+  <div id="noBookings" [hidden]="allFeedbacks.length > 0">
+    <br>
+    <br>
+    <br>
+    <br>
+    <p align="center" style="color: red;"><strong>No Feedbacks Yet</strong></p>
+
+  </div>
+</div>
+
