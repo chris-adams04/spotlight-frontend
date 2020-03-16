@@ -15,7 +15,7 @@ import {  ElementRef, AfterViewInit, Input } from '@angular/core';
 
 
 export class AppComponent implements AfterViewInit{
-  title = 'DanceSchool';
+  title = 'DanceStudio';
 
   userName;
 

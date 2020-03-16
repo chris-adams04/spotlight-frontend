@@ -72,22 +72,22 @@
 
       <ng-container matColumnDef="costumeStatus">
           <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Costume Status</strong> </th>
-          <td  style="color: rgb(41, 93, 236);" mat-cell *matCellDef="let element"> {{element.costumeStatus}} </td>
+          <td  style="color: rgb(41, 93, 236);" mat-cell *matCellDef="let element"> <b>{{element.costumeStatus}} </b></td>
         </ng-container>
 
         <ng-container matColumnDef="bookingStatus">
             <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Booking Status</strong> </th>
-            <td  style="color: rgb(41, 93, 236);" mat-cell *matCellDef="let element"> {{element.bookingStatus}} </td>
+            <td  style="color: rgb(41, 93, 236);" mat-cell *matCellDef="let element"> <b>{{element.bookingStatus}} </b></td>
           </ng-container>
 
           <ng-container matColumnDef="feeStatus">
               <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Fee Status</strong> </th>
-              <td  style="color:  rgb(41, 93, 236);" mat-cell *matCellDef="let element"> {{element.feeStatus}} </td>
+              <td  style="color:  rgb(41, 93, 236);" mat-cell *matCellDef="let element"><b> {{element.feeStatus}}</b> </td>
             </ng-container>
 
             <ng-container matColumnDef="totalFee">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Total Fee</strong> </th>
-                <td  style="color:  rgb(41, 93, 236);" mat-cell *matCellDef="let element"> {{element.totalFee}} </td>
+                <td  style="color:  rgb(41, 93, 236);" mat-cell *matCellDef="let element"> <b>{{element.totalFee}}</b></td>
               </ng-container> 
 
       <!-- buttons -->

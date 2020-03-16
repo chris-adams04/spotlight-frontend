@@ -2,9 +2,12 @@
   <div style="text-align: center;">
     <h3><strong>Confirm Selection </strong></h3>
   </div>
+  <br>
   <div align="center" class="imgcontainer">
-    <img src="../assets/img/confirm.jpg" alt="Avatar" class="avatar">
+    <img src="../assets/img/conf.jpg" alt="Avatar" class="avatar">
   </div>
+  <br>
+  
   <div>
     <form name="confir" (ngSubmit)="onSubmit(confirm)" #confirm="ngForm">
      <div align="center">
@@ -39,15 +42,13 @@
           </tr>
         </td>
         </tbody>
-
         
-
       </table>
       <br>
       
       <div><button type="button" type="submit" [disabled]=!confirm.valid class="btn btn-info">Confirm</button></div>
       <br>
-      <br>
+      
     </div>
     </form>
   </div>
